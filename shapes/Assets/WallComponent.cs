@@ -16,6 +16,7 @@ public class WallComponent : MonoBehaviour
         BuildAWallAtY(0);
         BuildAWallAtY(14);
 
+
     }
 
     // Update is called once per frame
