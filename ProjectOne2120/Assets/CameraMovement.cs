@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed = 4;
     public Vector3 lookAngles;
 
     Rigidbody rb;
@@ -33,12 +33,14 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
+
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
         }
 
+        //the mouse movement that changes 
         if (Input.GetAxis("Mouse X") != 0)
         {
             lookAngles.y += Input.GetAxis("Mouse X");
