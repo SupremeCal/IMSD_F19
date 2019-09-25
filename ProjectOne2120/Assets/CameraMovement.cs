@@ -4,33 +4,51 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public float speed = 5;
+    public Vector3 lookAngles;
 
-    private Vector3 lookAngle;
+    Rigidbody rb;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+   
+
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0,0 , 1);
+            transform.position += new Vector3(0, 0, speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position += new Vector3(0, 0, -1 );
+            transform.position += new Vector3(0, 0, -speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(1, 0, 0);
+            transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position += new Vector3(-1, 0, 0);
+            transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
         }
-
-        if (Input.GetAxis("Mouse X") != 0) 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            lookAngle.y += Input.GetAxis("Mouse Y");
+            rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
         }
 
-        transform.rotation = Quaternion.Euler(lookAngle);
+        if (Input.GetAxis("Mouse X") != 0)
+        {
+            lookAngles.y += Input.GetAxis("Mouse X");
+        }
+        if (Input.GetAxis("Mouse Y") != 0)
+        {
+            lookAngles.x += Input.GetAxis("Mouse Y");
+        }
+
+        transform.rotation = Quaternion.Euler(lookAngles);
     }
 }
+
