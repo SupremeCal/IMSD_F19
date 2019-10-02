@@ -13,6 +13,6 @@ public class trainMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(40 * Mathf.Sin(Time.time * 2), 0, -5);
+        transform.position = new Vector3(100 * Mathf.Sin(Time.time * 2) + 40, 0, -5);
     }
 }

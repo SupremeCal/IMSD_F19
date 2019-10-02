@@ -8,16 +8,15 @@ public class PlatformLoop : MonoBehaviour
 
     void Update()
     {
-        BuildAWallAtY(-1);
+        BuildAWallAtZ(-4);
     }
     // Start is called before the first frame update
-    void BuildAWallAtY(float y)
+    void BuildAWallAtZ(float z)
     {
-        for (int xPos = 0; xPos < 40; xPos++)
         {
-            for (int zPos = 0; zPos < 10; zPos++)
+            for (int xPos = 0; xPos < 20; xPos++)
             {
-                Instantiate(WallBuilder, new Vector3(xPos - 10, y, zPos), Quaternion.identity);
+                Instantiate(WallBuilder, new Vector3(xPos * 10 - 40, -5, z), Quaternion.identity);
             }
         }
     }

@@ -8,7 +8,7 @@ public class PillarLoop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BuildAWallAtZ(1);
+        BuildAWallAtZ(2);
     }
 
     // Update is called once per frame
