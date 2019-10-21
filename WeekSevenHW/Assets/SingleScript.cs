@@ -6,12 +6,10 @@ public class SingleScript : MonoBehaviour
 {
     public GameObject TheObjectThatIWantToRef;
     public bool IfActiveDoAction;
-    public bool LightAction;
     public Light lightColorChange;
 
     private Vector3 offset;
     private float timer;
-    public Vector3 scale;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +25,11 @@ public class SingleScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                TheObjectThatIWantToRef.transform.position = new Vector3(Mathf.Sin(timer), 0, 0) + offset;
+                TheObjectThatIWantToRef.transform.position = new Vector3(Mathf.Sin(timer) , Mathf.Cos(timer + 2 ), 0) + offset;
+            }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                TheObjectThatIWantToRef.transform.position = new Vector3(Mathf.Cos(timer + 10), Mathf.Tan(timer + 10), 0) + offset;
             }
            
         }
@@ -40,14 +42,19 @@ public class SingleScript : MonoBehaviour
         }
 
         float AnyColor = Mathf.Sin(timer) / 2 + .5f;
+        float NewColor = Mathf.Cos(timer) / 2 + .5f;
 
-        if (Input.GetKey(KeyCode.V))
-        {
-            lightColorChange.color = new Color(255, AnyColor, 0);
-        }
-        if (Input.GetKey(KeyCode.C))
-        {
-            lightColorChange.color = new Color(AnyColor, 255, 0);
-        }
+            if (Input.GetKey(KeyCode.V))
+            {
+                lightColorChange.color = new Color(255, AnyColor, 0);
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                lightColorChange.color = new Color(AnyColor, 255, 0);
+            }
+            if (Input.GetKey(KeyCode.B))
+            {
+                lightColorChange.color = new Color(0, 0, NewColor + .1f);
+            }
     }
 }
